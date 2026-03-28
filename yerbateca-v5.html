@@ -1,51 +1,300 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yerbateca Pipeline Results — v5</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Georgia', serif; background: #DACCB2; color: #2C1810; padding: 2rem; }
-        h1 { text-align: center; margin-bottom: 0.5rem; font-size: 2rem; }
-        .summary { text-align: center; margin-bottom: 2rem; font-size: 1.1rem; }
-        .summary span { font-weight: bold; }
-        .card { background: #F0E8D8; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;
-                 box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .card h2 { margin-bottom: 1rem; font-size: 1.4rem; }
-        .card h2 em { font-weight: normal; color: #666; font-size: 1rem; }
-        .images { display: flex; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-        .img-box { flex: 1; min-width: 300px; }
-        .img-box h3 { margin-bottom: 0.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-        .img-box img { width: 100%; max-height: 500px; object-fit: contain; border-radius: 8px; }
-        .illustration { background: #DACCB2; border-radius: 8px; padding: 1rem; }
-        .score-box { border: 2px solid; border-radius: 8px; padding: 1rem; margin-top: 1rem; }
-        .score-box h3 { margin-bottom: 0.5rem; }
-        .score-box table { width: 100%; }
-        .score-box td { padding: 4px 8px; }
-        .score-box td:last-child { text-align: right; font-weight: bold; }
-        .warn { background: #ffd166; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
-        .notes { font-style: italic; margin-top: 0.5rem; color: #555; }
-        .error { color: #c1121f; font-weight: bold; }
-        .failed { opacity: 0.6; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yerbateca v5 — Atlas Botanical Illustrations (H-282)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background-color: #F0E8D8;
+    color: #2B2218;
+    font-family: 'Newsreader', Georgia, serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .header {
+    text-align: center;
+    padding: 3rem 1rem 1rem;
+    border-bottom: 1px solid #D8CFC0;
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.2rem;
+    color: #2B2218;
+    letter-spacing: 0.05em;
+  }
+  .header .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #8B7B6B;
+    font-size: 1.1rem;
+    margin-top: 0.3rem;
+  }
+  .scores-banner {
+    text-align: center;
+    padding: 1rem;
+    background: #E8DFD0;
+    margin: 0 2rem 2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #5C4A3A;
+  }
+  .scores-banner strong { color: #2B2218; }
+  .plant-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .plant-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #D8CFC0;
+  }
+  .plant-card:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .plant-card:last-child {
+    border-bottom: none;
+  }
+  .plant-img-wrap {
+    flex: 0 0 380px;
+    min-width: 280px;
+  }
+  .plant-img-wrap img {
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
+  }
+  .plant-caption {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  .plant-caption .latin {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #5C4A3A;
+    font-size: 1rem;
+  }
+  .plant-caption .common {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: #2B2218;
+    font-size: 1.3rem;
+    display: block;
+    margin-top: 0.2rem;
+  }
+  .plant-info {
+    flex: 1;
+  }
+  .plant-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .plant-info .morphology {
+    font-size: 0.85rem;
+    color: #8B7B6B;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: #E8DFD0;
+    border-radius: 3px;
+  }
+  .plant-info p {
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+  }
+  .score-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .score-pass { background: #c8e6c9; color: #2e7d32; }
+  .score-warn { background: #fff9c4; color: #f57f17; }
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .score-table td {
+    padding: 0.3rem 0.5rem;
+    border-bottom: 1px solid #D8CFC0;
+  }
+  .score-table td:last-child { text-align: right; font-weight: 600; }
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    color: #8B7B6B;
+    font-size: 0.85rem;
+    border-top: 1px solid #D8CFC0;
+    margin-top: 2rem;
+  }
+  @media (max-width: 768px) {
+    .plant-card, .plant-card:nth-child(even) {
+      flex-direction: column;
+    }
+    .plant-img-wrap { flex: none; width: 100%; }
+  }
+</style>
 </head>
 <body>
-    <h1>Yerbateca Illustration Pipeline — v5</h1>
-    <p class="summary">
-        Average score: <span>0.00/5.0</span> |
-        Pass rate: <span>0/0</span> |
-        Generated: 2026-03-28 01:38
-    </p>
-    
-            <div class="card failed">
-                <h2>Maca <em>(Lepidium meyenii)</em></h2>
-                <p class="error">Failed: All generation attempts failed</p>
-            </div>
-            
-    <footer style="text-align:center; margin-top:2rem; color:#888; font-size:0.85rem;">
-        Pipeline: find_plant_reference → ComfyUI (JuggernautXL + ControlNet Canny + herbarium LoRA) → Gemini scoring<br>
-        Page bg: #DACCB2 | Image: mix-blend-mode: multiply on white-bg illustrations
-    </footer>
+
+<div class="header">
+  <h1>YERBATECA</h1>
+  <div class="subtitle">Enciclopedia de Plantas Medicinales Andinas</div>
+</div>
+
+<div class="scores-banner">
+  <strong>H-282/H-286 Results:</strong> Atlas-ref ControlNet illustrations &mdash;
+  Fleet avg morphology: <strong>3.75/5</strong> (target: &ge;3.50) &mdash;
+  <span class="score-badge score-pass">PASS</span>
+  &nbsp;|&nbsp; Background: mix-blend-mode:multiply &nbsp;|&nbsp; Text artifacts: 0/5
+</div>
+
+<div class="plant-grid">
+
+  <!-- Coca -->
+  <div class="plant-card">
+    <div class="plant-img-wrap">
+      <img src="img/coca.png" alt="Erythroxylum coca botanical illustration">
+      <div class="plant-caption">
+        <span class="latin"><em>Erythroxylum coca</em> Lam.</span>
+        <span class="common">Coca</span>
+      </div>
+    </div>
+    <div class="plant-info">
+      <h2>Coca</h2>
+      <div class="morphology">
+        <table class="score-table">
+          <tr><td>Leaf shape</td><td>4/5</td></tr>
+          <tr><td>Flower structure</td><td>4/5</td></tr>
+          <tr><td>Root/stem</td><td>4/5</td></tr>
+          <tr><td>Overall resemblance</td><td>4/5</td></tr>
+          <tr><td><strong>Average</strong></td><td><strong>4.00</strong> <span class="score-badge score-pass">PASS</span></td></tr>
+        </table>
+      </div>
+      <p>Oval alternate leaves with venation, small flowers at nodes, red drupes, woody branch. Multi-panel atlas layout showing fruit stages. Very recognizable as Erythroxylum.</p>
+      <p><strong>Ref:</strong> Atlas illustration plate &mdash; illustration-to-illustration ControlNet.</p>
+    </div>
+  </div>
+
+  <!-- Quinoa -->
+  <div class="plant-card">
+    <div class="plant-img-wrap">
+      <img src="img/quinoa.png" alt="Chenopodium quinoa botanical illustration">
+      <div class="plant-caption">
+        <span class="latin"><em>Chenopodium quinoa</em> Willd.</span>
+        <span class="common">Quinoa</span>
+      </div>
+    </div>
+    <div class="plant-info">
+      <h2>Quinoa</h2>
+      <div class="morphology">
+        <table class="score-table">
+          <tr><td>Leaf shape</td><td>4/5</td></tr>
+          <tr><td>Flower structure</td><td>4/5</td></tr>
+          <tr><td>Root/stem</td><td>3/5</td></tr>
+          <tr><td>Overall resemblance</td><td>4/5</td></tr>
+          <tr><td><strong>Average</strong></td><td><strong>3.75</strong> <span class="score-badge score-pass">PASS</span></td></tr>
+        </table>
+      </div>
+      <p>Dense colorful panicle with multi-colored seed clusters (red, white, golden). Triangular leaves correct. Dramatic improvement from v1 (was 2.25). Line-drawing reference transferred perfectly via ControlNet.</p>
+      <p><strong>Ref:</strong> Botanical line drawing &mdash; illustration-to-illustration ControlNet.</p>
+    </div>
+  </div>
+
+  <!-- Una de Gato -->
+  <div class="plant-card">
+    <div class="plant-img-wrap">
+      <img src="img/una-de-gato.png" alt="Uncaria tomentosa botanical illustration">
+      <div class="plant-caption">
+        <span class="latin"><em>Uncaria tomentosa</em> (Willd.) DC.</span>
+        <span class="common">U&ntilde;a de Gato</span>
+      </div>
+    </div>
+    <div class="plant-info">
+      <h2>U&ntilde;a de Gato</h2>
+      <div class="morphology">
+        <table class="score-table">
+          <tr><td>Leaf shape</td><td>4/5</td></tr>
+          <tr><td>Flower structure</td><td>3/5</td></tr>
+          <tr><td>Root/stem</td><td>4/5</td></tr>
+          <tr><td>Overall resemblance</td><td>4/5</td></tr>
+          <tr><td><strong>Average</strong></td><td><strong>3.75</strong> <span class="score-badge score-pass">PASS</span></td></tr>
+        </table>
+      </div>
+      <p>Yellow flowers, large leaves, vine-like habit. Opposite elliptical leaves correct. Hook thorns somewhat visible. Recognizable as tropical climbing plant.</p>
+      <p><strong>Ref:</strong> Cropped atlas plate &mdash; photo-to-illustration ControlNet.</p>
+    </div>
+  </div>
+
+  <!-- Aguaymanto -->
+  <div class="plant-card">
+    <div class="plant-img-wrap">
+      <img src="img/aguaymanto.png" alt="Physalis peruviana botanical illustration">
+      <div class="plant-caption">
+        <span class="latin"><em>Physalis peruviana</em> L.</span>
+        <span class="common">Aguaymanto</span>
+      </div>
+    </div>
+    <div class="plant-info">
+      <h2>Aguaymanto</h2>
+      <div class="morphology">
+        <table class="score-table">
+          <tr><td>Leaf shape</td><td>3/5</td></tr>
+          <tr><td>Flower structure</td><td>4/5</td></tr>
+          <tr><td>Root/stem</td><td>3/5</td></tr>
+          <tr><td>Overall resemblance</td><td>4/5</td></tr>
+          <tr><td><strong>Average</strong></td><td><strong>3.50</strong> <span class="score-badge score-pass">PASS</span></td></tr>
+        </table>
+      </div>
+      <p>Orange berries in papery husks unmistakable Physalis. Yellow flowers visible. Beautiful watercolor atlas style. Leaves present but not prominently heart-shaped.</p>
+      <p><strong>Ref:</strong> Photo reference &mdash; photo-to-illustration ControlNet.</p>
+    </div>
+  </div>
+
+  <!-- Maca -->
+  <div class="plant-card">
+    <div class="plant-img-wrap">
+      <img src="img/maca.png" alt="Lepidium meyenii botanical illustration">
+      <div class="plant-caption">
+        <span class="latin"><em>Lepidium meyenii</em> Walp.</span>
+        <span class="common">Maca</span>
+      </div>
+    </div>
+    <div class="plant-info">
+      <h2>Maca</h2>
+      <div class="morphology">
+        <table class="score-table">
+          <tr><td>Leaf shape</td><td>4/5</td></tr>
+          <tr><td>Flower structure</td><td>3/5</td></tr>
+          <tr><td>Root/stem</td><td>4/5</td></tr>
+          <tr><td>Overall resemblance</td><td>4/5</td></tr>
+          <tr><td><strong>Average</strong></td><td><strong>3.75</strong> <span class="score-badge score-pass">PASS</span></td></tr>
+        </table>
+      </div>
+      <p>Major improvement (v3). Frilly pinnate carrot-like leaves now correct. Row of tuberous roots with variety of shapes. Wikimedia cropped photo reference transferred structure well via ControlNet. Improved from v2 (was 3.0) and v1 (was 2.0).</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Yerbateca v5 &mdash; H-282/H-286 Verification &mdash; L804 C118</p>
+  <p>Pipeline: ComfyUI (Juggernaut XL v9 + ControlNet Canny SDXL + herbarium_sdxl LoRA)</p>
+  <p>Background: CSS mix-blend-mode:multiply on #F0E8D8</p>
+  <p>Generated 2026-03-28</p>
+</div>
+
 </body>
 </html>

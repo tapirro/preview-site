@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yerbateca Pipeline Results — v5</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', serif; background: #DACCB2; color: #2C1810; padding: 2rem; }
+        h1 { text-align: center; margin-bottom: 0.5rem; font-size: 2rem; }
+        .summary { text-align: center; margin-bottom: 2rem; font-size: 1.1rem; }
+        .summary span { font-weight: bold; }
+        .card { background: #F0E8D8; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;
+                 box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .card h2 { margin-bottom: 1rem; font-size: 1.4rem; }
+        .card h2 em { font-weight: normal; color: #666; font-size: 1rem; }
+        .images { display: flex; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .img-box { flex: 1; min-width: 300px; }
+        .img-box h3 { margin-bottom: 0.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .img-box img { width: 100%; max-height: 500px; object-fit: contain; border-radius: 8px; }
+        .illustration { background: #DACCB2; border-radius: 8px; padding: 1rem; }
+        .score-box { border: 2px solid; border-radius: 8px; padding: 1rem; margin-top: 1rem; }
+        .score-box h3 { margin-bottom: 0.5rem; }
+        .score-box table { width: 100%; }
+        .score-box td { padding: 4px 8px; }
+        .score-box td:last-child { text-align: right; font-weight: bold; }
+        .warn { background: #ffd166; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
+        .notes { font-style: italic; margin-top: 0.5rem; color: #555; }
+        .error { color: #c1121f; font-weight: bold; }
+        .failed { opacity: 0.6; }
+    </style>
+</head>
+<body>
+    <h1>Yerbateca Illustration Pipeline — v5</h1>
+    <p class="summary">
+        Average score: <span>0.00/5.0</span> |
+        Pass rate: <span>0/0</span> |
+        Generated: 2026-03-28 01:38
+    </p>
+    
+            <div class="card failed">
+                <h2>Maca <em>(Lepidium meyenii)</em></h2>
+                <p class="error">Failed: All generation attempts failed</p>
+            </div>
+            
+    <footer style="text-align:center; margin-top:2rem; color:#888; font-size:0.85rem;">
+        Pipeline: find_plant_reference → ComfyUI (JuggernautXL + ControlNet Canny + herbarium LoRA) → Gemini scoring<br>
+        Page bg: #DACCB2 | Image: mix-blend-mode: multiply on white-bg illustrations
+    </footer>
+</body>
+</html>

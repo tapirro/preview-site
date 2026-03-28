@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yerbateca Style Variants — Gate G1 Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #F0E8D8;
+    color: #2B2218;
+    font-family: 'Newsreader', Georgia, serif;
+    line-height: 1.7;
+  }
+
+  .header {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px 20px;
+    border-bottom: 1px solid #D8CFC0;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+    color: #2B2218;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 1rem;
+    color: #8B7B6B;
+    max-width: 600px;
+  }
+
+  .reference {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 40px;
+  }
+
+  .reference h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: #5C4A3A;
+    margin-bottom: 12px;
+  }
+
+  .reference img {
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid #D8CFC0;
+  }
+
+  .variant {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 40px;
+  }
+
+  .variant-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #8B7B6B;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .variant h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: #2B2218;
+    margin-bottom: 8px;
+  }
+
+  .variant .description {
+    font-size: 0.95rem;
+    color: #8B7B6B;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  /* The illustration area simulates the page feel */
+  .illustration-area {
+    background: #F0E8D8;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .illustration-area img {
+    max-width: 100%;
+    max-height: 600px;
+    /* No border, no shadow — blends into page */
+  }
+
+  .caption {
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  .caption .latin {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #5C4A3A;
+  }
+
+  .caption .common {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: #2B2218;
+    margin-top: 4px;
+  }
+
+  .divider {
+    max-width: 200px;
+    margin: 12px auto;
+    border: none;
+    border-top: 1px solid #D8CFC0;
+  }
+
+  /* Sample page layout simulation */
+  .page-simulation {
+    max-width: 700px;
+    margin: 30px auto 0;
+    text-align: left;
+  }
+
+  .page-simulation p {
+    font-size: 1rem;
+    color: #2B2218;
+    margin-bottom: 16px;
+  }
+
+  .section-divider {
+    max-width: 900px;
+    margin: 0 auto;
+    border: none;
+    border-top: 1px solid #D8CFC0;
+  }
+
+  .scoring {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 40px 60px;
+  }
+
+  .scoring h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .scoring table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .scoring th, .scoring td {
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid #D8CFC0;
+  }
+
+  .scoring th {
+    color: #8B7B6B;
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+  }
+
+  .score-badge {
+    display: inline-block;
+    background: #2B2218;
+    color: #F0E8D8;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  .footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    border-top: 1px solid #D8CFC0;
+    color: #8B7B6B;
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Yerbateca — Style Variants for Review</h1>
+  <p>Gate G1: 5 layout variants within the unified botanical atlas direction. All illustrations generated locally with Flux schnell on Mac Mini. Plant: <em>Uncaria tomentosa</em> (Uña de Gato).</p>
+</div>
+
+<div class="reference">
+  <h2>Reference Image (target aesthetic)</h2>
+  <img src="reference_style.png" alt="Reference botanical atlas style">
+</div>
+
+<hr class="section-divider">
+
+<!-- VARIANT A -->
+<div class="variant">
+  <div class="variant-label">Variant A</div>
+  <h2>Full-Page Hero Illustration</h2>
+  <p class="description">Plant fills the top third of the page. Classic atlas composition — flowering branch with fruit detail, centered and dominant.</p>
+
+  <div class="illustration-area">
+    <img src="../yerbateca.com/assets/img/plantas/una-de-gato/hero_atlas_hero.png" alt="Variant A: Hero illustration">
+    <div class="caption">
+      <div class="latin"><em>Uncaria tomentosa</em> (Willd.) DC.</div>
+      <hr class="divider">
+      <div class="common">Uña de Gato</div>
+    </div>
+  </div>
+
+  <div class="page-simulation">
+    <p>La <strong>Uña de Gato</strong> (<em>Uncaria tomentosa</em>) es una liana trepadora nativa de la selva amazónica peruana. Utilizada durante siglos por los pueblos indígenas Asháninka, esta planta es reconocida por sus propiedades antiinflamatorias e inmunoestimulantes.</p>
+    <p>Los alcaloides oxindólicos presentes en la corteza interna son los principales compuestos bioactivos, con estudios que demuestran efectos moduladores sobre el sistema inmunológico.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- VARIANT B -->
+<div class="variant">
+  <div class="variant-label">Variant B</div>
+  <h2>Side Illustration (Text Wraps Around)</h2>
+  <p class="description">Plant positioned to the left, leaving space for text to flow alongside. Elegant asymmetric composition for content-heavy pages.</p>
+
+  <div class="illustration-area" style="text-align: left; display: flex; gap: 40px; align-items: flex-start;">
+    <div style="flex-shrink: 0;">
+      <img src="../yerbateca.com/assets/img/plantas/una-de-gato/hero_atlas_side.png" alt="Variant B: Side illustration" style="max-height: 500px;">
+      <div class="caption" style="text-align: center;">
+        <div class="latin"><em>Uncaria tomentosa</em></div>
+      </div>
+    </div>
+    <div style="padding-top: 20px;">
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 12px;">Uña de Gato</h3>
+      <p style="font-size: 0.95rem; color: #2B2218; line-height: 1.7; margin-bottom: 14px;">La Uña de Gato es una de las plantas medicinales más estudiadas de la Amazonía. Su nombre proviene de las espinas curvas en forma de garra que utiliza para trepar por los árboles del dosel selvático.</p>
+      <p style="font-size: 0.95rem; color: #2B2218; line-height: 1.7;">Los estudios clínicos han demostrado propiedades antiinflamatorias comparables a fármacos convencionales, con menores efectos secundarios reportados.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- VARIANT C -->
+<div class="variant">
+  <div class="variant-label">Variant C</div>
+  <h2>Multiple Specimens (Atlas Plate)</h2>
+  <p class="description">Multiple views and plant parts on one page, like the reference image. Most faithful to the 19th-century botanical plate format.</p>
+
+  <div class="illustration-area">
+    <img src="../yerbateca.com/assets/img/plantas/una-de-gato/hero_atlas_multi.png" alt="Variant C: Multiple specimens">
+    <div class="caption">
+      <div class="latin"><em>Uncaria tomentosa</em> (Willd.) DC.</div>
+      <hr class="divider">
+      <div class="common">Uña de Gato — Lámina I</div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- VARIANT D -->
+<div class="variant">
+  <div class="variant-label">Variant D</div>
+  <h2>Detailed Anatomical View</h2>
+  <p class="description">Scientific plate with cross-sections and labeled parts. Emphasizes botanical precision and educational value.</p>
+
+  <div class="illustration-area">
+    <img src="../yerbateca.com/assets/img/plantas/una-de-gato/hero_atlas_anatomy.png" alt="Variant D: Anatomical view">
+    <div class="caption">
+      <div class="latin"><em>Uncaria tomentosa</em> (Willd.) DC.</div>
+      <hr class="divider">
+      <div class="common">Anatomía — Corteza y Alcaloides</div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- VARIANT E -->
+<div class="variant">
+  <div class="variant-label">Variant E</div>
+  <h2>Plant in Natural Habitat</h2>
+  <p class="description">Landscape watercolor showing the plant in its Andean environment. More atmospheric, evokes the García Márquez magical realism warmth.</p>
+
+  <div class="illustration-area">
+    <img src="../yerbateca.com/assets/img/plantas/una-de-gato/hero_atlas_habitat.png" alt="Variant E: Habitat illustration">
+    <div class="caption">
+      <div class="latin"><em>Uncaria tomentosa</em> en su hábitat natural</div>
+      <hr class="divider">
+      <div class="common">Selva Alta, Perú — 400-800 m.s.n.m.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- SCORING TABLE -->
+<div class="scoring">
+  <h2>Evaluation Summary</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Variant</th>
+        <th>Botanical Accuracy</th>
+        <th>Atlas Style Fidelity</th>
+        <th>Background Blend</th>
+        <th>Page Layout Fit</th>
+        <th>Overall</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A — Hero</strong></td>
+        <td>3.5/5</td>
+        <td>4/5</td>
+        <td>4.5/5</td>
+        <td>4/5</td>
+        <td><span class="score-badge">4.0</span></td>
+      </tr>
+      <tr>
+        <td><strong>B — Side</strong></td>
+        <td>4/5</td>
+        <td>4/5</td>
+        <td>4.5/5</td>
+        <td>4/5</td>
+        <td><span class="score-badge">4.1</span></td>
+      </tr>
+      <tr>
+        <td><strong>C — Multi</strong></td>
+        <td>4/5</td>
+        <td>4.5/5</td>
+        <td>4.5/5</td>
+        <td>4.5/5</td>
+        <td><span class="score-badge">4.4</span></td>
+      </tr>
+      <tr>
+        <td><strong>D — Anatomy</strong></td>
+        <td>4/5</td>
+        <td>4/5</td>
+        <td>4.5/5</td>
+        <td>4/5</td>
+        <td><span class="score-badge">4.1</span></td>
+      </tr>
+      <tr>
+        <td><strong>E — Habitat</strong></td>
+        <td>3.5/5</td>
+        <td>3.5/5</td>
+        <td>4/5</td>
+        <td>4.5/5</td>
+        <td><span class="score-badge">3.9</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 20px; color: #8B7B6B; font-size: 0.9rem;">
+    <strong>Recommendation:</strong> Variant C (Multi) is closest to the reference image and scores highest. Consider mixing C for main herb pages + E for section openers. All backgrounds match #F0E8D8 range and blend seamlessly.
+  </p>
+
+  <p style="margin-top: 12px; color: #8B7B6B; font-size: 0.9rem;">
+    <strong>Note:</strong> Generated with Flux schnell (4 steps, no quantization). Quality can be improved with Flux dev (20-50 steps) or style-specific LoRAs from CivitAI/HuggingFace. These are proof-of-concept.
+  </p>
+</div>
+
+<div class="footer">
+  <p>Yerbateca Gate G1 Review — Generated 2026-03-27 by SEO Agent (L656)</p>
+  <p>Model: Flux.1 schnell | Steps: 4 | Platform: Mac Mini M4 Pro | Time per image: ~25s</p>
+</div>
+
+</body>
+</html>

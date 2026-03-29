@@ -1,0 +1,72 @@
+{
+  "cycle": 154,
+  "loops": [
+    1058,
+    1059,
+    1060
+  ],
+  "vera_scores": {
+    "L1058": {
+      "V": 2.0,
+      "E": 4.0,
+      "R": 5.0,
+      "A": 5.0,
+      "composite": 4.1,
+      "impact": 2
+    },
+    "L1059": {
+      "V": 3.0,
+      "E": 5.0,
+      "R": 5.0,
+      "A": 5.0,
+      "composite": 4.6,
+      "impact": 3
+    },
+    "L1060": {
+      "V": 4.0,
+      "E": 5.0,
+      "R": 5.0,
+      "A": 5.0,
+      "composite": 4.8,
+      "impact": 3
+    }
+  },
+  "e_axis_metrics": {
+    "tool_reuse_ratio": 31.2,
+    "script_creation_rate": 13.6,
+    "external_action_ratio": 52.0
+  },
+  "quality_audit": {
+    "tools_reviewed": 15,
+    "tools_avg_score": 3.9,
+    "botanica_reviewed": 6,
+    "botanica_avg_score": 3.6,
+    "product_reviewed": 1,
+    "product_avg_score": 4.5,
+    "overall_avg": 4.0,
+    "weakest_deliverables": [
+      {
+        "name": "widget tool",
+        "score": 3.2,
+        "gap": "schema, trust"
+      },
+      {
+        "name": "noticias page",
+        "score": 3.2,
+        "gap": "schema, authority"
+      },
+      {
+        "name": "politica-editorial page",
+        "score": 3.2,
+        "gap": "schema, credentials"
+      }
+    ]
+  },
+  "meta_audit_warnings": 8,
+  "meta_audit_critical": [
+    "script_creation_rate: 30 (target 1-5)",
+    "tool_reuse_ratio: 29 (target 40-100)",
+    "shipped_ratio: 0 (target 30-100)",
+    "operator_directive: 1 (ACTIVE but not executing)"
+  ]
+}

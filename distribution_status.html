@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribution Status — seo-agent</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f5f5f7; }
+        .card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #1d1d1f; margin-bottom: 8px; }
+        h2 { color: #1d1d1f; font-size: 18px; margin-top: 0; }
+        .status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+        .blocked { background: #ffe5e5; color: #c40c1c; }
+        .working { background: #e8ffe8; color: #1c7c1c; }
+        .partial { background: #fff4e5; color: #c47a1c; }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #e5e5e5; }
+        th { color: #6e6e73; font-size: 13px; font-weight: 500; }
+        .note { background: #fff8e1; padding: 16px; border-radius: 8px; font-size: 14px; margin-top: 20px; }
+        code { background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Distribution Status</h1>
+    <p style="color: #6e6e73; margin-bottom: 30px;">Loop 1220 • Cycle 177 • Updated 2026-03-30</p>
+
+    <div class="card">
+        <h2>Medium (PRIMARY — per P0) <span class="status blocked">BLOCKED</span></h2>
+        <table>
+            <tr><th>Issue</th><td><strong>IP Locked</strong> — Safari cookies work on MacBook, return 403 from Mac Mini</td></tr>
+            <tr><th>Tested</th><td>GET /_/api/users/430b42e26a16 → 403 (Cloudflare)</td></tr>
+            <tr><th>Cookies</th><td><code>.secrets/medium_cookies.json</code> — Valid until 2027</td></tr>
+            <tr><th>Resolution</th><td>Run <code>python3 scripts/medium_manual_login.py</code> on Mac Mini (requires screen sharing)</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Yerbateca.com <span class="status blocked">BLOCKED</span></h2>
+        <table>
+            <tr><th>Issue</th><td><strong>DNS Misconfigured</strong> — Points to GoDaddy, not GitHub Pages</td></tr>
+            <tr><th>Tested</th><td>curl https://yerbateca.com/ → 200 (GoDaddy "Launching Soon" page)</td></tr>
+            <tr><th>Content</th><td>13 plant pages ready in <code>site/yerbateca.com/</code></td></tr>
+            <tr><th>Resolution</th><td>Update DNS CNAME to point to GitHub Pages</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Other Channels</h2>
+        <table>
+            <tr><th>DEV.to</th><td><span class="status blocked">ABANDONED</span> — Confirmation emails don't reach</td></tr>
+            <tr><th>WordPress.com</th><td><span class="status blocked">SUSPENDED</span> — Needs appeal</td></tr>
+            <tr><th>HackerNews</th><td><span class="status blocked">BLOCKED</span> — /showlim rate limiter</td></tr>
+            <tr><th>Reddit</th><td><span class="status blocked">NOT CREATED</span></td></tr>
+            <tr><th>X.com</th><td><span class="status blocked">NOT CREATED</span></td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Work Available (Internal)</h2>
+        <table>
+            <tr><th>IMP1</th><td>Consolidate duplicate scripts (script_creation_rate: 65 → 15 target)</td></tr>
+            <tr><th>IMP2</th><td>Distribution tracking dashboard</td></tr>
+            <tr><th>R1</th><td>Doorway differentiation (liluama.co, flexacil.co, furoma.co, bururan.co)</td></tr>
+            <tr><th>Yerbateca</th><td>37+ more plant pages ready (552 illustrations available)</td></tr>
+        </table>
+    </div>
+
+    <div class="note">
+        <strong>Note:</strong> P0 task says "Medium is READY" but the Safari cookies provided are IP-locked to the operator's MacBook. To enable autonomous publishing from Mac Mini, fresh Chromium cookies must be generated on the Mac Mini itself via <code>medium_manual_login.py</code>.
+    </div>
+</body>
+</html>

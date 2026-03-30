@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribution Deadlock — Decision Brief</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+    .container { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 8px; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+    h1 { font-size: 28px; margin-bottom: 10px; color: #1a1a1a; }
+    .meta { color: #666; font-size: 14px; margin-bottom: 30px; }
+    h2 { font-size: 20px; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #e5e5e5; padding-bottom: 8px; }
+    .blocker { background: #fff3f3; border-left: 4px solid #dc2626; padding: 15px; margin: 20px 0; border-radius: 4px; }
+    .blocker-title { font-weight: bold; color: #991b1b; margin-bottom: 5px; }
+    .blocker-detail { font-size: 14px; color: #7f1d1d; }
+    .status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-left: 10px; }
+    .status.blocked { background: #fee2e2; color: #991b1b; }
+    .status.partial { background: #fef3c7; color: #92400e; }
+    .evidence { background: #f9fafb; border: 1px solid #e5e7eb; padding: 15px; margin: 15px 0; border-radius: 4px; }
+    .evidence pre { background: #1f2937; color: #e5e7eb; padding: 12px; border-radius: 4px; overflow-x: auto; font-size: 12px; }
+    .metric { display: inline-block; background: #dbeafe; color: #1e40af; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; margin: 5px 5px 5px 0; }
+    .metric.bad { background: #fee2e2; color: #991b1b; }
+    .action { background: #dcfce7; border: 1px solid #86efac; padding: 15px; border-radius: 6px; margin-top: 20px; }
+    .action-item { margin: 10px 0; padding-left: 20px; position: relative; }
+    .action-item:before { content: "→"; position: absolute; left: 0; color: #166534; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Distribution Deadlock <span class="status blocked">BLOCKED</span></h1>
+    <p class="meta">Cycle 177 | Loop 1218 | Generated: 2026-03-30</p>
+
+    <h2>Current Situation</h2>
+    <p>All distribution channels are blocked. Internal work continues but nothing reaches users.</p>
+
+    <div class="metric bad">shipped_ratio: 0%</div>
+    <div class="metric bad">external_action_ratio: 57% (but zero value delivery)</div>
+    <div class="metric bad">cycle_over_cycle: -0.9 (negative progress)</div>
+
+    <h2>Blocked Channels</h2>
+
+    <div class="blocker">
+      <div class="blocker-title">1. Medium Publishing <span class="status blocked">BLOCKED</span></div>
+      <div class="blocker-detail">
+        Operator declared "Medium is READY" with Safari cookies. Reality: Cloudflare 403 blocks all Playwright automation attempts.<br><br>
+        <strong>Root cause:</strong> Safari cookies are browser-fingerprint-locked. Playwright/Chromium cannot replicate Safari's fingerprint.<br><br>
+        <strong>Attempts:</strong> 6+ scripts created, all fail with 403.
+      </div>
+    </div>
+
+    <div class="blocker">
+      <div class="blocker-title">2. Yerbateca.com DNS <span class="status blocked">BLOCKED</span></div>
+      <div class="blocker-detail">
+        13 plant pages with botanical illustrations deployed to GitHub Pages. Site accessible at tapirro.github.io but yerbateca.com DNS points to GoDaddy.<br><br>
+        <strong>Impact:</strong> SEO value zero because main domain doesn't resolve to deployed content.
+      </div>
+    </div>
+
+    <div class="blocker">
+      <div class="blocker-title">3. HackerNews Show HN <span class="status blocked">BLOCKED</span></div>
+      <div class="blocker-detail">
+        Account botanica_andina exists, can login. /showlim rate limiter blocks all Show HN posts.<br><br>
+        <strong>Attempts:</strong> 4 submissions, all hit /showlim.
+      </div>
+    </div>
+
+    <h2>Internal Work (Value Not Realized)</h2>
+
+    <p>Work completed but value trapped due to distribution blocks:</p>
+
+    <ul style="margin-left: 20px; line-height: 2;">
+      <li><strong>L1214-L1216:</strong> 9 new Yerbateca plant pages (camu-camu, graviola, hercampuri, moringa, quinoa, sacha-inchi, cinchona, yerba-mate, boldo)</li>
+      <li><strong>L1213:</strong> Doorway differentiation for 4 product domains completed</li>
+      <li><strong>Tools created:</strong> match_and_generate_plant_pages.py, create_high_confidence_plant_pages.py</li>
+      <li><strong>Illustrations matched:</strong> 76 fuzzy matches from 552 plates vs 500 plants (3 high-confidence)</li>
+    </ul>
+
+    <h2>Evidence</h2>
+
+    <div class="evidence">
+      <strong>Git log L1214-L1217:</strong>
+      <pre>L1214: IMP1 — Yerbateca plant pages deployed: 6 new monographs...
+L1215: Distribution deadlock — all channels blocked. Medium: Cloudflare 403...
+L1216: IMP — Created Yerbateca plant-illustration matching tool...
+L1217: REVIEW — Distribution deadlock persists. External channels blocked...</pre>
+    </div>
+
+    <div class="evidence">
+      <strong>Yerbateca deployed content (accessible at GitHub Pages):</strong>
+      <pre>https://tapirro.github.io/yerbateca-com-site/plantas/camu-camu/
+https://tapirro.github.io/yerbateca-com-site/plantas/cinchona-officinalis/
+https://tapirro.github.io/yerbateca-com-site/plantas/ilex-paraguariensis/
+https://tapirro.github.io/yerbateca-com-site/plantas/peumus-boldus/</pre>
+    </div>
+
+    <div class="evidence">
+      <strong>Yerbateca.com (DNS blocked):</strong>
+      <pre>$ curl -I https://yerbateca.com/plantas/camu-camu/
+HTTP/1.1 404 Not Found
+Server: DPS/2.0.0+sha-1c3955e (GoDaddy)</pre>
+    </div>
+
+    <h2>Decision Points</h2>
+
+    <div class="action">
+      <h3>Option A: Fix Yerbateca DNS (Recommended - lowest effort)</h3>
+      <div class="action-item">Update yerbateca.com DNS to point to GitHub Pages (CNAME: tapirro.github.io)</div>
+      <div class="action-item">Result: 13 plant pages become accessible, SEO value realized immediately</div>
+      <div class="action-item">Time: 5 minutes operator time</div>
+    </div>
+
+    <div class="action">
+      <h3>Option B: Enable Medium Publishing (Recommended - highest impact)</h3>
+      <div class="action-item">Provide Chromium-compatible Medium cookies OR run manual login via screen sharing</div>
+      <div class="action-item">Result: Can publish 5+ articles targeting GSC opportunity queries, DA95 backlinks</div>
+      <div class="action-item">Time: 2-10 minutes operator time</div>
+    </div>
+
+    <div class="action">
+      <h3>Option C: Accept Status Quo (NOT RECOMMENDED)</h3>
+      <div class="action-item">Continue internal work with zero external value delivery</div>
+      <div class="action-item">Result: More content that nobody can find, shipped_ratio stays 0%</div>
+      <div class="action-item">Meta-audit will continue flagging negative progress</div>
+    </div>
+
+    <h2>Recommendation</h2>
+
+    <p><strong>Execute Options A and B in parallel:</strong></p>
+
+    <ol style="margin-left: 20px; line-height: 2;">
+      <li>Update yerbateca.com DNS to GitHub Pages (immediate SEO impact: 13 indexed pages)</li>
+      <li>Provide Chromium-compatible Medium cookies OR allow 5-minute manual login session</li>
+      <li>Agent publishes 5 Medium articles targeting GSC opportunity queries</li>
+    </ol>
+
+    <p style="margin-top: 20px;"><em>This will break the distribution deadlock and allow value from 1218 loops to be realized.</em></p>
+  </div>
+</body>
+</html>
